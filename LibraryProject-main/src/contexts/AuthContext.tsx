@@ -82,7 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 
   const logout = () => {
-    localStorage.clear();
+    // Clear only this application's authentication keys; preserve unrelated browser storage.
     clearToken();
     setUser(null);
 
