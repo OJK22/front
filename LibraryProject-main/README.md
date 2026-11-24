@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# Tulkarm Municipality Public Library Management System
 
-## Project info
+A React + TypeScript frontend for a municipal public-library system. The application code in this repository is organized into public-facing pages and staff workflows for library operations.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+> **Project scope:** This repository contains the frontend only. The API and database are maintained separately and are not included here.
 
-## How can I edit this code?
+## Main areas
 
-There are several ways of editing your application.
+The current source tree includes these application areas:
 
-**Use Lovable**
+- **Public portal:** home, about, services, contact, news/posts, search, member profile, and online borrowing-request entry points.
+- **Library operations:** book catalog screens, adding and editing book records, barcode workflows, deletion, and reports.
+- **Borrowing and subscriptions:** subscriber and guarantor workflows, new and renewed subscriptions, loans, returns, late-return handling, online requests, alerts, and reports.
+- **Administration:** employee and group management, permission-aware navigation, dashboard statistics, and reporting components.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The exact availability of each operation depends on the separately deployed API and the permissions returned by that service.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technology
 
-**Use your preferred IDE**
+- React 18
+- TypeScript
+- Vite
+- React Router
+- TanStack Query
+- Tailwind CSS and shadcn/ui
+- Vitest and ESLint
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Requirements
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js and npm compatible with the versions in `package.json` and `package-lock.json`.
 
-Follow these steps:
+## Run locally
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Run these commands from this directory (the `LibraryProject-main` directory):
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Vite serves the app on port `5001` by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Quality checks
 
-**Use GitHub Codespaces**
+```bash
+npm run lint
+npm test
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+These commands are documented from the package scripts; they have not been represented as passing until run in a local or CI environment.
 
-## What technologies are used for this project?
+## API and deployment notes
 
-This project is built with:
+The development Vite configuration proxies `/api`, `/api/Cms`, and `/media` to the API/media hosts currently configured in `vite.config.ts`. Those development proxy targets currently use HTTP. Production deployments should use HTTPS and an appropriately configured reverse proxy or secure API base URL. Do not assume the development proxy is a production deployment configuration.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Authentication state is currently handled in the browser by the frontend. Client-side route guards and permission-based UI controls are not a substitute for authorization on the API: the server must validate every protected operation.
 
-## How can I deploy this project?
+## Related repositories
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- [Books management UI](https://github.com/OJK22/books)
+- [Staff administration UI](https://github.com/OJK22/admin)
+- [Lending prototype](https://github.com/OJK22/loan) — experimental and not a production replacement for the main system.
 
-## Can I connect a custom domain to my Lovable project?
+## Security
 
-Yes, you can!
+Please do not submit real member records, passwords, access tokens, or production database exports in issues or pull requests. Report security concerns privately to the project maintainer.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License and project rights
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+No open-source license is currently included in this repository. Until the rights holder(s) explicitly select and add an OSI-approved license, do not assume that the code is licensed for reuse. Confirm the municipality's and project contributors' rights before publishing a license.
